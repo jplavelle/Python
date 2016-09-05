@@ -40,7 +40,7 @@ KPI_data = set_KPI_data(initial_year)
 header = KPI_data.next()
 program_compiled = [(header)]
 
-# Loop through reporting years and budget programs.
+# Loop through reporting_year and budget_program accross the files.
 i = 0
 range_end = len(year_list)
 
@@ -49,18 +49,22 @@ for i in range (0, range_end):
     print "Processing %s" % reporting_year
     KPI_data = set_KPI_data(reporting_year)
 
+# Strips out whitespace present on some entries and compares to budget_program.
+# Appends matches to target list.
     for row in KPI_data:
-        if row[17] == budget_program:
+        if row[17].strip() == budget_program:
             program_compiled.append(row)
     i =+ 1
 
 
-# Results saved to CSV.
-output_string = 'DC_Performance_KPIs_%s.csv' % budget_program
+# Results in target list saved to CSV.
+# Replace any existing forward slashes that will conflict with the file naming.
+budget_program_revised = budget_program.replace('/','-')
+output_string = 'DC_Performance_KPIs_%s.csv' % budget_program_revised
 output_path = open(output_string,'wb')
 output_file = csv.writer(output_path)
 output_file.writerows(program_compiled)
-print """Results are saved to DC_Performance_KPIs_%s.csv""" % budget_program
+print """Results are saved to DC_Performance_KPIs_%s.csv""" % budget_program_revised
 
 print ("""
 Success! All your base code are belong to us...
