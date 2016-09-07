@@ -48,3 +48,9 @@ You will see a series of prompts after executing the code.
     <http://cfoinfo.dc.gov/cognos/finance.htm> or enter <http://bit.ly/1Cyx2ME>
     to go directly to the tool.
 4.  Once done, a message will indicating the name of the output file.
+
+### Feedback is welcome
+This is merely a first effort. I invite any feedback, whether on this project
+in particular or with writing Python code in general.
+
+Thank you!
